@@ -9,8 +9,10 @@ Take notes in your terminal
 ## Usage
 
     Usage: notes [arguments]
-        -P, --show-path                  Show this current file path
+        -t=TITLE, --title=TITLE          Change de title (default = HOUR:MINUTE)
+        -s=SUBTITLE, --subtitle=TITLE    Change de subtitle (default none)
         -h, --help                       Show this help
+        -P, --show-path                  Show this current file path
         -I, --no-increment               Do not increment the last note
 
 
@@ -27,5 +29,6 @@ TODO: Write development instructions here
 5. Create a new Pull Request
 
 ## Contributors
+
 
 - [Nephos](https://github.com/Nephos) Arthur Poulet - creator, maintainer
