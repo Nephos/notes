@@ -6,9 +6,12 @@ require "option_parser"
 #
 # ./notes blah blah blah :: blah blah on the second line
 
+t = Time.now
 notes_path = ENV["NOTES_PATH"]? || File.expand_path(".local/notes", ENV["HOME"])
-date = Time.now.to_s("%F-%A")
-time = Time.now.to_s("%R")
+date = t.to_s("%F-%A")
+minute = ((t.minute / 15) * 15).to_s.rjust 2, '0'
+hour = t.hour.to_s.rjust 2, '0'
+time = "#{hour}:#{minute}"
 file_path = File.expand_path("#{date}.md", notes_path)
 note = ""
 action = :add
@@ -32,11 +35,12 @@ when :show
   puts File.read(file_path)
 when :add
   Dir.mkdir notes_path rescue nil
-  data = if increment && !File.read(file_path).match(/^# #{title}$/m).nil?
+  data = if increment && File.exists?(file_path) && !File.read(file_path).match(/^# #{title}$/m).nil?
            ""
          else
            "\n# #{title}"
          end
+  data = data.strip unless File.exists?(file_path)
   data += "\n## #{subtitle}" unless subtitle.empty?
   data += "\n#{note}\n"
 
