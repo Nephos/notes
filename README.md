@@ -11,6 +11,7 @@ Take notes in your terminal
     ./note a note to be written in .local/notes :: and a second line to write after the :: third line
 
     Usage: notes [arguments]
+        -c=TAG, --category=TAG           Choose a title prefix (change the directory)
         -t=TITLE, --title=TITLE          Change de title (default = HOUR:MINUTE)
         -s=SUBTITLE, --subtitle=TITLE    Change de subtitle (default none)
         -h, --help                       Show this help
