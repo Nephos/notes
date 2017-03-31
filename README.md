@@ -8,12 +8,15 @@ Take notes in your terminal
 
 ## Usage
 
+    ./note a note to be written in .local/notes :: and a second line to write after the :: third line
+
     Usage: notes [arguments]
         -t=TITLE, --title=TITLE          Change de title (default = HOUR:MINUTE)
         -s=SUBTITLE, --subtitle=TITLE    Change de subtitle (default none)
         -h, --help                       Show this help
         -P, --show-path                  Show this current file path
         -I, --no-increment               Do not increment the last note
+
 
 
 ## Development
