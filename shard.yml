@@ -1,0 +1,13 @@
+name: notes
+version: 0.1.0
+
+authors:
+  - Arthur Poulet <arthur.poulet@mailoo.org>
+
+targets:
+  notes:
+    main: src/notes.cr
+
+crystal: 0.20.5
+
+license: MIT
