@@ -39,7 +39,7 @@ when :add
 
 "
          end
-  puts "add data: #{data}"
+  puts data
   File.open(file_path, "a") do |f|
     f << data
   end
