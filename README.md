@@ -1,14 +1,18 @@
 # notes
 
-TODO: Write a description here
+Take notes in your terminal
 
 ## Installation
 
-TODO: Write installation instructions here
+    make
 
 ## Usage
 
-TODO: Write usage instructions here
+    Usage: notes [arguments]
+        -P, --show-path                  Show this current file path
+        -h, --help                       Show this help
+        -I, --no-increment               Do not increment the last note
+
 
 ## Development
 
