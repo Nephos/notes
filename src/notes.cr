@@ -38,7 +38,7 @@ case action
 when :show_path
   puts "File: " + file_path
 when :show
-  puts File.read(file_path)
+  puts (File.read(file_path) rescue "nothing published yet")
 when :add
   Dir.mkdir notes_path rescue nil
   data = if increment && File.exists?(file_path) && !File.read(file_path).match(/^# #{title}$/m).nil?
