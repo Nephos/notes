@@ -13,7 +13,6 @@ minute = ((t.minute / 15) * 15).to_s.rjust 2, '0'
 hour = t.hour.to_s.rjust 2, '0'
 time = "#{hour}:#{minute}"
 
-note = ""
 increment = true
 title = time
 subtitle = ""
@@ -35,11 +34,9 @@ parsed = OptionParser.parse! do |p|
   p.on("-N", "--show-name", "Show this current file's name") { action = :show_name }
   p.on("-n=NAME", "--name=NAME", "Choose the file's name") { |name| file_name = name }
   p.on("-h", "--help", "Show this help") { puts p; exit }
-  p.unknown_args { |args| note = args.map(&.strip).join(" ").split("~~").map(&.strip).join("\n").strip }
 end
-note += ARGV.join(" ")
-note = note.strip
-action ||= note.empty? ? :show : :add
+note = ARGV.map(&.strip).join(" ").split("~~").map(&.strip).join("\n").strip
+action = note.empty? ? :show : :add if action.nil?
 
 notes_path = File.expand_path(tag, notes_path) unless tag.empty?
 file_path = File.expand_path("#{file_name}.md", notes_path) if file_path.empty?
