@@ -11,12 +11,15 @@ Take notes in your terminal
     ./note a note to be written in .local/notes ~~ and a second line to write after the ~~ third line
 
     Usage: notes [arguments]
-        -c=TAG, --category=TAG           Choose a title prefix (change the directory)
-        -t=TITLE, --title=TITLE          Change de title (default = HOUR:MINUTE)
-        -s=SUBTITLE, --subtitle=TITLE    Change de subtitle (default none)
-        -h, --help                       Show this help
-        -P, --show-path                  Show this current file path
-        -I, --no-increment               Do not increment the last note
+      -c=TAG, --category=TAG           Choose a title prefix (change the directory)
+      -t=TITLE, --title=TITLE          Change de title (default = HOUR:MINUTE)
+      -s=SUBTITLE, --subtitle=TITLE    Change de subtitle (default none)
+      -h, --help                       Show this help
+      -P, --show-path                  Show this current file's path
+      -D, --show-directory             Show this current file's directory
+      -I, --no-increment               Do not increment the last note
+      -p=PATH, --path=PATH             Choose the file's path
+      -d=PATH, --directory=PATH        Choose the file's directory
 
 
 
