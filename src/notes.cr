@@ -37,6 +37,8 @@ parsed = OptionParser.parse! do |p|
   p.on("-h", "--help", "Show this help") { puts p; exit }
   p.unknown_args { |args| note = args.map(&.strip).join(" ").split("~~").map(&.strip).join("\n").strip }
 end
+note += ARGV.join(" ")
+note = note.strip
 action ||= note.empty? ? :show : :add
 
 notes_path = File.expand_path(tag, notes_path) unless tag.empty?
