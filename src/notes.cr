@@ -20,6 +20,7 @@ tag = ""
 action = nil
 file_path = ""
 file_name = "#{date}"
+read = :argv
 
 parsed = OptionParser.parse! do |p|
   p.banner = "Usage: notes [arguments]"
@@ -33,9 +34,12 @@ parsed = OptionParser.parse! do |p|
   p.on("-d=PATH", "--directory=PATH", "Choose the file's directory") { |path| notes_path = path }
   p.on("-N", "--show-name", "Show this current file's name") { action = :show_name }
   p.on("-n=NAME", "--name=NAME", "Choose the file's name") { |name| file_name = name }
+  p.on("--stdin", "Read on stdin") { read = :stdin }
   p.on("-h", "--help", "Show this help") { puts p; exit }
 end
-note = ARGV.map(&.strip).join(" ").split("~~").map(&.strip).join("\n").strip
+
+note = read == :stdin ? STDIN.gets_to_end : ARGV.map(&.strip).join(" ")
+note = note.split("~~").map(&.strip).join("\n").strip
 action = note.empty? ? :show : :add if action.nil?
 
 notes_path = File.expand_path(tag, notes_path) unless tag.empty?
