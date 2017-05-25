@@ -35,6 +35,7 @@ parsed = OptionParser.parse! do |p|
   p.on("-N", "--show-name", "Show this current file's name") { action = :show_name }
   p.on("-n=NAME", "--name=NAME", "Choose the file's name") { |name| file_name = name }
   p.on("--stdin", "Read on stdin") { read = :stdin }
+  p.on("-w", "--week", "Show the last week of notes") { action = :show_week }
   p.on("-h", "--help", "Show this help") { puts p; exit }
 end
 
@@ -54,6 +55,22 @@ when :show_name
   puts "File name: " + file_name
 when :show
   puts (File.read(file_path) rescue "nothing published yet")
+when :show_week
+  paths = Dir.entries(notes_path)
+  paths.sort!
+  paths.select! do |path|
+    date = path.match /^(\d{4}-\d{2}-\d{2})-\w+\.md$/
+    Time.parse(date[1], "%F") > (Time.new - 14.days) if date
+  end
+  paths.reverse! unless STDOUT.tty?
+  paths.each_with_index do |path, i|
+    title = path.chomp(".md")
+    puts "#{title}"
+    puts "="*title.size
+    puts
+    puts File.read(File.expand_path(path, notes_path))
+    puts "\n\n\n\n" unless i == paths.size - 1
+  end
 when :add
   Dir.mkdir notes_path rescue nil
   data = if increment && File.exists?(file_path) && !File.read(file_path).match(/^# #{title}$/m).nil?
