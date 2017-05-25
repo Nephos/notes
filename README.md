@@ -21,6 +21,8 @@ Take notes in your terminal
         -d=PATH, --directory=PATH        Choose the file's directory
         -N, --show-name                  Show this current file's name
         -n=NAME, --name=NAME             Choose the file's name
+        -w, --week                       Show the last week of notes
+        --last-days=N                    Show the last days of notes
         --stdin                          Read on stdin
         -h, --help                       Show this help
 
