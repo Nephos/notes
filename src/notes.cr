@@ -62,7 +62,7 @@ when :show_days
   paths.sort!
   paths.select! do |path|
     date = path.match /^(\d{4}-\d{2}-\d{2})-\w+\.md$/
-    Time.parse(date[1], "%F") > (Time.new - days_to_display) if date
+    Time.parse!(date[1], "%F") > (Time.new - days_to_display) if date
   end
   paths.reverse! unless STDOUT.tty?
   paths.each_with_index do |path, i|

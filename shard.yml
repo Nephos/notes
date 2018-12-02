@@ -8,6 +8,6 @@ targets:
   notes:
     main: src/notes.cr
 
-crystal: 0.20.5
+crystal: 0.23.0
 
 license: GPL-3.0
