@@ -1,3 +1,5 @@
+**Migrated to <https://git.sceptique.eu/Sceptique/notes>**
+
 # notes
 
 Take notes in your terminal
