@@ -20,5 +20,7 @@ doc:
 	crystal docs
 clean:
 	rm $(NAME)
+gui: deps_opt
+	crystal build src/notes-gui.cr
 
 .PHONY: all run build release test deps deps_update clean doc

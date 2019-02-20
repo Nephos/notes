@@ -2,11 +2,16 @@ name: notes
 version: 0.1.0
 
 authors:
-  - Arthur Poulet <arthur.poulet@mailoo.org>
+  - Arthur Poulet <arthur.poulet@sceptique.eu>
 
 targets:
   notes:
     main: src/notes.cr
+
+dependencies:
+  qt5:
+    github: Papierkorb/qt5.cr
+#    branch: master-ready-to-use
 
 crystal: 0.23.0
 
