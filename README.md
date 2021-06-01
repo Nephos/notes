@@ -2,6 +2,8 @@
 
 Take notes in your terminal
 
+Compatible crystal v1
+
 ## Installation
 
     make

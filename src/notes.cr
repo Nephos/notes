@@ -6,7 +6,7 @@ require "option_parser"
 #
 # ./notes blah blah blah ~~ blah blah on the second line
 
-t = Time.now
+t = Time.local
 notes_path = ENV["NOTES_PATH"]? || File.expand_path(".local/notes", ENV["HOME"])
 date = t.to_s("%F-%A")
 minute = ((t.minute / 15) * 15).to_s.rjust 2, '0'
@@ -23,7 +23,7 @@ file_name = "#{date}"
 read = :argv
 days_to_display = 7.days
 
-parsed = OptionParser.parse! do |p|
+parsed = OptionParser.parse do |p|
   p.banner = "Usage: notes [arguments]"
   p.on("-c=TAG", "--category=TAG", "Choose a title prefix (change the directory)") { |arg_tag| tag = arg_tag }
   p.on("-t=TITLE", "--title=TITLE", "Change de title (default = HOUR:MINUTE)") { |arg_title| title = arg_title }
@@ -62,7 +62,7 @@ when :show_days
   paths.sort!
   paths.select! do |path|
     date = path.match /^(\d{4}-\d{2}-\d{2})-\w+\.md$/
-    Time.parse!(date[1], "%F") > (Time.new - days_to_display) if date
+    Time.parse!(date[1], "%F") > (Time.local - days_to_display) if date
   end
   paths.reverse! unless STDOUT.tty?
   paths.each_with_index do |path, i|

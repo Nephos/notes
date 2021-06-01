@@ -1,5 +1,5 @@
 name: notes
-version: 0.1.0
+version: 1.1
 
 authors:
   - Arthur Poulet <arthur.poulet@sceptique.eu>
@@ -13,6 +13,6 @@ dependencies:
     github: Papierkorb/qt5.cr
 #    branch: master-ready-to-use
 
-crystal: 0.23.0
+crystal: 1.0.0
 
 license: GPL-3.0
